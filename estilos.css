@@ -1,0 +1,34 @@
+body{
+    background-color: aquamarine;
+    font-size: x-large;
+    text-align: justify;
+    color: brown;
+}
+
+p{
+    background-color: chocolate;
+    font-size: xx-large;
+}
+
+#parrafoUno{
+    background-color: cyan;
+}
+
+
+
+#enumeraciones{
+    background-color: lightsalmon;
+    border: solid 3px black;
+    color: black;
+}
+
+h3{
+    background-color: lightgreen;
+    border: solid 3px black;
+}
+
+input{
+    background-color: chocolate;
+    font-size: large;
+    width: 50%;
+}
