@@ -4,14 +4,12 @@
             Segunda p&aacutegina
         </title>
         <link href="estilos.css" type="text/css" rel="stylesheet">
+        <script src="funciones.js" type="text/javascript"></script>
     </head>
 
-        <body>
+        <body id="bodyCalculadora">
             <h1>Jugando con los inputs</h1>
             <br><br>
-
-
-
             Caja de texto <br>
             <input type="text" value="Escribe lo que quieras..."> <br>
             Contrase&ntildea:<br>
@@ -22,6 +20,34 @@
             <input size="8px" type="checkbox"><br><br>
             Text Area:<br>
             <textarea>Hola que tal</textarea>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+            <div>
+                <h3>Calculadora</h3>
+                <br>
+                Primer número:
+                <input type="number" id="numeroUno" step="0.01"><br>
+                Segundo número:
+                <input type="number" id="numeroDos" step="0.01"><br>
+                <input type="button" onclick="Calculadora()" value="Calcular!" style="width: 120px; background-color: white;"><br>
+                <h4>Resultados</h4>
+                Suma:
+                <input type="number" id="suma"><br>
+                Resta:
+                <input type="number" id="resta"><br>
+                Multiplicacion:
+                <input type="number" id="mul"><br>
+                Division:
+                <input type="number" id="div"><br>
+                Potencia:
+                <input type="number" id="pot"><br>
+            </div>
+
+
+
+
+            <br><br><br><br><br><br><br><br><br><br><br><br>
 
         </body>
 </html>

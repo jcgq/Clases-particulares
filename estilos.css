@@ -32,3 +32,17 @@ input{
     font-size: large;
     width: 50%;
 }
+
+#bodyCalculadora{
+    background-color: cadetblue;
+    text-align: center;
+}
+
+div{
+    background-color: grey;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    width: 50%;
+    margin-left: 25%;
+    border: black solid 2px;
+}
