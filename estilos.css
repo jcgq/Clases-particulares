@@ -46,3 +46,10 @@ div{
     margin-left: 25%;
     border: black solid 2px;
 }
+
+table{
+    border: solid black 3px;
+    font-size: x-large;
+    text-align: center;
+    width: 100%;
+}
