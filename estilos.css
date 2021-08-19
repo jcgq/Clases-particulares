@@ -31,6 +31,13 @@ input{
     background-color: chocolate;
     font-size: large;
     width: 50%;
+    visibility: visible;
+}
+
+select{
+    background-color: chocolate;
+    font-size: large;
+    width: 50%;
 }
 
 #bodyCalculadora{
@@ -52,4 +59,9 @@ table{
     font-size: x-large;
     text-align: center;
     width: 100%;
+}
+
+img{
+    width: 100px;
+    height: 100px;
 }
