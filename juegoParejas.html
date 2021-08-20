@@ -1,4 +1,4 @@
-<html>
+<html >
     <head>
         <title>
             Juego de las parejas
@@ -7,68 +7,72 @@
         <script src="funciones.js" type="text/javascript"></script>
     </head>
 
-    <body id="bodyCalculadora">
+    <body id="bodyCalculadora" onload="reiniciarJuego()">
         <h1>El juego de las parejas</h1>
         <div>
             <table border="3">
                 <tr>
                     <td>
-                        <img src="imagenes/kiwi.png">
+                        <img src="imagenes/interrogacion.jpg" id="1" onclick="voltarImagen('1')">
                     </td>
                     <td>
-                        <img src="imagenes/kiwi.png">
+                        <img src="imagenes/interrogacion.jpg" id="2" onclick="voltarImagen('2')">
                     </td>
                     <td>
-                        <img src="imagenes/uva.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="3" onclick="voltarImagen('3')">
                     </td>
                     <td>
-                        <img src="imagenes/uva.jpg">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="imagenes/manzana.jpg">
-                    </td>
-                    <td>
-                        <img src="imagenes/manzana.jpg">
-                    </td>
-                    <td>
-                        <img src="imagenes/melon.jpg">
-                    </td>
-                    <td>
-                        <img src="imagenes/melon.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="4" onclick="voltarImagen('4')">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="imagenes/sandia.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="5" onclick="voltarImagen('5')">
                     </td>
                     <td>
-                        <img src="imagenes/sandia.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="6" onclick="voltarImagen('6')">
                     </td>
                     <td>
-                        <img src="imagenes/melocoton.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="7" onclick="voltarImagen('7')">
                     </td>
                     <td>
-                        <img src="imagenes/melocoton.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="8" onclick="voltarImagen('8')">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="imagenes/pina.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="9" onclick="voltarImagen('9')">
                     </td>
                     <td>
-                        <img src="imagenes/pina.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="10" onclick="voltarImagen('10')">
                     </td>
                     <td>
-                        <img src="imagenes/platano.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="11" onclick="voltarImagen('11')">
                     </td>
                     <td>
-                        <img src="imagenes/platano.jpg">
+                        <img src="imagenes/interrogacion.jpg" id="12" onclick="voltarImagen('12')">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="imagenes/interrogacion.jpg" id="13" onclick="voltarImagen('13')">
+                    </td>
+                    <td>
+                        <img src="imagenes/interrogacion.jpg" id="14" onclick="voltarImagen('14')">
+                    </td>
+                    <td>
+                        <img src="imagenes/interrogacion.jpg" id="15" onclick="voltarImagen('15')">
+                    </td>
+                    <td>
+                        <img src="imagenes/interrogacion.jpg" id="16" onclick="voltarImagen('16')">
                     </td>
                 </tr>
             </table>
         </div>
+
+        <br><br>
+
+        <input type="button" onclick="reiniciarJuego()" value="Reiniciar Juego">
 
     </body>
 </html>
