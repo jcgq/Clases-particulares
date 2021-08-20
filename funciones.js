@@ -45,34 +45,46 @@ var arrayImages = ["imagenes/pina.jpg", "imagenes/kiwi.png", "imagenes/manzana.j
 var cliclado=false;
 var srcClicado = "imagen/pina.jpg";
 var idClicado = "tres";
-var puntos = 0;
+var aciertos = 0;
 
 function voltarImagen(identificador){
-    document.getElementById(identificador).src=arrayImages[parseInt(identificador)];
-    setTimeout(() => {
-        console.log(comprobarPuntos(identificador))
-      }, 1000);
-    
+    if(aciertos==8){
+        alert("El juego ha finalizado. Enhorabuena!!");
+    }
+    else{
+        document.getElementById(identificador).src=arrayImages[parseInt(identificador)-1];
+        setTimeout(() => {
+            console.log(comprobarPuntos(identificador))
+          }, 600);
+    }
 }
 
 function comprobarPuntos(identificador){
+    var aux = parseInt(document.getElementById("puntos").value);
     if(cliclado == false){
         cliclado = true;
-        srcClicado = arrayImages[parseInt(identificador)];
+        srcClicado = arrayImages[parseInt(identificador)-1];
         idClicado = identificador;
     }
     else{
-        if(srcClicado == arrayImages[parseInt(identificador)]){
-            alert("Pareja correcta");
-            puntos += 100;
+        if(srcClicado == arrayImages[parseInt(identificador)-1]){
+            //alert("Pareja correcta");
+            aux = parseInt(aux) + parseInt(100);
+            document.getElementById("puntos").value=aux;
             cliclado=false;
+            aciertos = parseInt(aciertos)+parseInt(1);
+            if(aciertos==8){
+                alert("El juego ha finalizado. Enhorabuena!!");
+            }
         }
         else{
-            puntos -= 50;
-            alert("Error, pareja incorrecta");
-            document.getElementById(identificador).src = "imagenes/interrogacion.jpg";
-            document.getElementById(idClicado).src = "imagenes/interrogacion.jpg";
+            aux = parseInt(aux) + parseInt(-50);
+            document.getElementById("puntos").value=aux;
+            //alert("Error, pareja incorrecta");
+            document.getElementById(identificador).src = "imagenes/interrogacion.png";
+            document.getElementById(idClicado).src = "imagenes/interrogacion.png";
             cliclado=false;
+
         }
     }
 }
@@ -81,5 +93,10 @@ function reiniciarJuego(){
     arrayImages.sort(function(){
         return Math.random() - 0.55
     });
+    for(var i = 1; i<=arrayImages.length; i++){
+        document.getElementById(parseInt(i)).src= "imagenes/interrogacion.png";
+    }
+    document.getElementById("puntos").value=0;
+    aciertos=0;
 }
 
