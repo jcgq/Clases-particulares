@@ -43,8 +43,8 @@ function sumar(){
 
 var arrayImages = ["imagenes/pina.jpg", "imagenes/kiwi.png", "imagenes/manzana.jpg", "imagenes/melon.jpg", "imagenes/platano.jpg", "imagenes/sandia.jpg", "imagenes/uva.jpg", "imagenes/melocoton.jpg", "imagenes/pina.jpg", "imagenes/kiwi.png", "imagenes/manzana.jpg", "imagenes/melon.jpg", "imagenes/platano.jpg", "imagenes/sandia.jpg", "imagenes/uva.jpg", "imagenes/melocoton.jpg"];
 var cliclado=false;
-var srcClicado = "imagen/pina.jpg";
-var idClicado = "tres";
+var srcClicado = "";
+var idClicado = "";
 var aciertos = 0;
 
 function voltarImagen(identificador){
@@ -55,7 +55,7 @@ function voltarImagen(identificador){
         document.getElementById(identificador).src=arrayImages[parseInt(identificador)-1];
         setTimeout(() => {
             console.log(comprobarPuntos(identificador))
-          }, 600);
+          }, 1000);
     }
 }
 
@@ -68,9 +68,9 @@ function comprobarPuntos(identificador){
     }
     else{
         if(srcClicado == arrayImages[parseInt(identificador)-1]){
-            //alert("Pareja correcta");
             aux = parseInt(aux) + parseInt(100);
             document.getElementById("puntos").value=aux;
+
             cliclado=false;
             aciertos = parseInt(aciertos)+parseInt(1);
             if(aciertos==8){
@@ -80,11 +80,10 @@ function comprobarPuntos(identificador){
         else{
             aux = parseInt(aux) + parseInt(-50);
             document.getElementById("puntos").value=aux;
-            //alert("Error, pareja incorrecta");
+
             document.getElementById(identificador).src = "imagenes/interrogacion.png";
             document.getElementById(idClicado).src = "imagenes/interrogacion.png";
             cliclado=false;
-
         }
     }
 }
@@ -98,5 +97,14 @@ function reiniciarJuego(){
     }
     document.getElementById("puntos").value=0;
     aciertos=0;
+    n = 0;
 }
 
+
+setInterval('contarSegundos()', 1000);
+var n = 0;
+
+function contarSegundos(){
+    document.getElementById("contador").value = n;
+    n++;
+}
