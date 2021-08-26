@@ -1,0 +1,30 @@
+<html >
+    <head>
+        <title>
+            Juego de las preguntas
+        </title>
+        <link href="estilos.css" type="text/css" rel="stylesheet">
+        <script src="funciones.js" type="text/javascript"></script>
+    </head>
+
+    <body id="bodyCalculadora" onload="reiniciarJuego()">
+        <h1>El juego de las preguntas</h1>
+        Puntuación:  <input type="text" id="puntos" value="0" size="30px" style="width: 60px;">
+        Tiempo: <input type="text" id="contador" value="0" size="30px" style="width: 60px;">
+        Vidas: <img src="imagenes/vida.jpg" id="vida1" style="width: 35px;height: 35px;">
+        <img src="imagenes/vida.jpg" id="vida2" style="width: 35px;height: 35px;">
+        <img src="imagenes/vida.jpg" id="vida3" style="width: 35px;height: 35px;"><br><br><br>
+        <div>
+
+            <img src="imagenes/interrogacion.png" id="1" onclick="visualizar()">
+
+        </div>
+
+        <br><br>
+
+        <input type="button" onclick="girarRuleta()" value="Girar la ruleta">
+
+        <input type="button" onclick="reiniciarJuego()" value="Reiniciar Juego">
+
+    </body>
+</html>
