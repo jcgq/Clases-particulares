@@ -99,6 +99,16 @@ function reiniciarJuego(){
 }
 
 
+function reiniciarJuego2(){
+    document.getElementById("puntos").value=0;
+    vidas=3;
+    n=0;
+    document.getElementById("vida1").src = "imagenes/vida.jpg";
+    document.getElementById("vida2").src = "imagenes/vida.jpg";
+    document.getElementById("vida3").src = "imagenes/vida.jpg";
+}
+
+
 setInterval('contarSegundos()', 1000);
 var n = 0;
 
@@ -123,6 +133,7 @@ function contarSegundos(){
   temas.set(5, 'Historia');
 
 
+  //DEPORTE
   var preguntasDeporte = new Map();
   preguntasDeporte.set(0, '¿Cuantas personas juegan en un partido de baloncesto?');
   preguntasDeporte.set(1, '¿Cuantas personas juegan en un partido de futbol?');
@@ -135,52 +146,94 @@ function contarSegundos(){
 
   //------------------------------------------------------------------------------
 
-  var preguntasBiologicas = new Map();
-  preguntasBiologicas.set(0 , 'Eucariotas, ¿es un tipo de célula?');
+//BIOLOGIA
+  var preguntasBiologia = new Map();
+  preguntasBiologia.set(0 , 'Eucariotas, ¿es un tipo de célula?');
+  preguntasBiologia.set(1 , 'Eucariotas, ¿es un tipo de célula?');
+  preguntasBiologia.set(2 , 'Eucariotas, ¿es un tipo de célula?');
 
-  var respuestasBiologicas = new Map();
-  respuestasBiologicas.set(0 , 'si');
+  var respuestasBiologia = new Map();
+  respuestasBiologia.set(0 , 'si');
+  respuestasBiologia.set(1 , 'si');
+  respuestasBiologia.set(2 , 'no');
 
   //------------------------------------------------------------------------------
 
+  //SOCIALES
   var preguntasSociales = new Map();
   preguntasSociales.set(0 , '¿Quién es el jugador de mayor edad en el Betis CF?');
+  preguntasSociales.set(1 , '¿Quién es el jugador de mayor edad en el Barcelona CF?');
+  preguntasSociales.set(2 , '¿Quién es el jugador de mayor edad en el Real Madrid CF?');
 
   var respuestasSociales = new Map();
-  respuestasSociales.set(0 , 'Joaquin');
+  respuestasSociales.set(0 , 'joaquin');
+  respuestasSociales.set(1 , 'pique');
+  respuestasSociales.set(2 , 'marcelo');
 
     //------------------------------------------------------------------------------
 
+//LITERATURA
   var preguntasLiteratura = new Map();
   preguntasLiteratura.set(0 , 'Pedro López, ¿es un famoso escritor?');
+  preguntasLiteratura.set(1 , '¿De dónde era Lorca?');
+  preguntasLiteratura.set(2 , 'Generación del ...');
 
   var respuestasLiteratura = new Map();
   respuestasLiteratura.set(0 , 'no');
+  respuestasLiteratura.set(1 , 'granada');
+  respuestasLiteratura.set(2 , '27');
 
     //------------------------------------------------------------------------------
 
+//MUSICA
   var preguntasMusica = new Map();
-  preguntasMusica.set(0 , 'Pedro López, ¿es un famoso escritor?');
+  preguntasMusica.set(0 , 'Las cuatro estaciones son de');
+  preguntasMusica.set(1 , 'Las cuatro estaciones son de');
+  preguntasMusica.set(2 , 'Las cuatro estaciones son de');
 
   var respuestasMusica = new Map();
-  respuestasMusica.set(0 , 'no');
+  respuestasMusica.set(0 , 'vivaldi');
+  respuestasMusica.set(1 , 'vivaldi');
+  respuestasMusica.set(2 , 'vivaldi');
 
     //------------------------------------------------------------------------------
+
+    //HISTORIA
 
   var preguntasHistoria = new Map();
   preguntasHistoria.set(0 , '¿Cuantos componían la quinta Estación?');
+  preguntasHistoria.set(1 , '¿Isabel y ?');
+  preguntasHistoria.set(2 , '¿Cuantos componían la quinta Estación?');
 
   var respuestasHistoria = new Map();
   respuestasHistoria.set(0 , '4');
+  respuestasHistoria.set(1 , 'fernando');
+  respuestasHistoria.set(2 , '4');
 
     //------------------------------------------------------------------------------
 
-function girarRuleta(){
-    var numero = parseInt(Math.random() * 5);
-    var temaElegido = temas.get(numero);
-    alert("El tema de la pregunta será " + temaElegido);
+    var vidas = 3;
 
-    responder(temaElegido);
+function girarRuleta(){
+    
+    if(vidas==0){
+        alert("Perdiste. Debes recargar la página");
+    }
+    else{
+        var aux = parseInt(document.getElementById("puntos").value);
+        if(aux >= 1000){
+            alert("Ganaste");
+        }
+        else{
+            var numero = parseInt(Math.random() * 5);
+            var temaElegido = temas.get(numero);
+            document.getElementById(numero).style.width="300px";
+            document.getElementById(numero).style.height="300px";
+            alert("El tema de la pregunta será " + temaElegido);
+            responder(temaElegido);
+        }
+    }
+    
 }
 
 
@@ -190,14 +243,19 @@ function responder(temaElegido){
     if(temaElegido == "Deportes"){
         var numPregunta = parseInt(Math.random() * preguntasDeporte.size);
         var pregunta = preguntasDeporte.get(numPregunta);
-        //alert("La pregunta es: " + pregunta);
 
         var solucion = prompt(pregunta);
+        solucion = solucion.toLowerCase();
+
         if(solucion == respuestasDeporte.get(numPregunta)){
             alert("Acertaste");
+            var aux = parseInt(document.getElementById("puntos").value);
+            aux = parseInt(aux) + parseInt(100);
+            document.getElementById("puntos").value=aux;
         }
         else{
             alert("Pierdes una vida");
+            vidas = vidas - 1;
             comprobarVida();
         }
     }
@@ -205,51 +263,116 @@ function responder(temaElegido){
     if(temaElegido == "Literatura"){
         var numPregunta = parseInt(Math.random() * preguntasLiteratura.size);
         var pregunta = preguntasLiteratura.get(numPregunta);
-        alert("La pregunta es: " + pregunta);
+        
+        var solucion = prompt(pregunta);
+        solucion = solucion.toLowerCase();
+
+        if(solucion == respuestasLiteratura.get(numPregunta)){
+            alert("Acertaste");
+            var aux = parseInt(document.getElementById("puntos").value);
+            aux = parseInt(aux) + parseInt(100);
+            document.getElementById("puntos").value=aux;
+        }
+        else{
+            alert("Pierdes una vida");
+            vidas = vidas - 1;
+            comprobarVida();
+        }
     }
 
     if(temaElegido == "Biologia"){
         var numPregunta = parseInt(Math.random() * preguntasBiologia.size);
         var pregunta = preguntasBiologia.get(numPregunta);
-        alert("La pregunta es: " + pregunta);
+        
+        var solucion = prompt(pregunta);
+        solucion = solucion.toLowerCase();
+
+        if(solucion == respuestasBiologia.get(numPregunta)){
+            alert("Acertaste");
+            var aux = parseInt(document.getElementById("puntos").value);
+            aux = parseInt(aux) + parseInt(100);
+            document.getElementById("puntos").value=aux;
+        }
+        else{
+            alert("Pierdes una vida");
+            vidas = vidas - 1;
+            comprobarVida();
+        }
     }
 
     if(temaElegido == "Sociales"){
         var numPregunta = parseInt(Math.random() * preguntasSociales.size);
         var pregunta = preguntasSociales.get(numPregunta);
-        alert("La pregunta es: " + pregunta);
+        
+        var solucion = prompt(pregunta);
+        solucion = solucion.toLowerCase();
+
+        if(solucion == respuestasSociales.get(numPregunta)){
+            alert("Acertaste");
+            var aux = parseInt(document.getElementById("puntos").value);
+            aux = parseInt(aux) + parseInt(100);
+            document.getElementById("puntos").value=aux;
+        }
+        else{
+            alert("Pierdes una vida");
+            vidas = vidas - 1;
+            comprobarVida();
+        }
     }
 
     if(temaElegido == "Musica"){
         var numPregunta = parseInt(Math.random() * preguntasMusica.size);
         var pregunta = preguntasMusica.get(numPregunta);
-        alert("La pregunta es: " + pregunta);
+        
+        var solucion = prompt(pregunta);
+        solucion = solucion.toLowerCase();
+
+        if(solucion == respuestasMusica.get(numPregunta)){
+            alert("Acertaste");
+            var aux = parseInt(document.getElementById("puntos").value);
+            aux = parseInt(aux) + parseInt(100);
+            document.getElementById("puntos").value=aux;
+        }
+        else{
+            alert("Pierdes una vida");
+            vidas = vidas - 1;
+            comprobarVida();
+        }
     }
 
     if(temaElegido == "Historia"){
         var numPregunta = parseInt(Math.random() * preguntasHistoria.size);
         var pregunta = preguntasHistoria.get(numPregunta);
-        alert("La pregunta es: " + pregunta);
+        
+        var solucion = prompt(pregunta);
+        solucion = solucion.toLowerCase();
+
+        if(solucion == respuestasHistoria.get(numPregunta)){
+            alert("Acertaste");
+            var aux = parseInt(document.getElementById("puntos").value);
+            aux = parseInt(aux) + parseInt(100);
+            document.getElementById("puntos").value=aux;
+        }
+        else{
+            alert("Pierdes una vida");
+            vidas = vidas - 1;
+            comprobarVida();
+        }
     }
 
 }
 
 
 function comprobarVida(){
-    var srcVida1 = document.getElementById("vida1").src;
-    if(srcVida1 == "imagenes/vidaPerdida.jpg"){
-        var srcVida2 = document.getElementById("vida2").src;
-        if(srcVida2 == "imagenes/vidaPerdida.jpg"){
-            var srcVida3 = document.getElementById("vida3").src;
-            if(srcVida3 == "imagenes/vidaPerdida.jpg"){
-                document.getElementById("vida3").src = "imagenes/vidaPerdida.jpg";
-            }
-        }
-        else{
-            document.getElementById("vida2").src = "imagenes/vidaPerdida.jpg";
-        }
+    if(vidas == 0){
+        document.getElementById("vida3").src = "imagenes/vidaPerdida.jpg";
     }
-    else{
+
+    if(vidas == 1){
+        document.getElementById("vida2").src = "imagenes/vidaPerdida.jpg";
+    }
+
+    if(vidas == 2){
         document.getElementById("vida1").src = "imagenes/vidaPerdida.jpg";
     }
 }
