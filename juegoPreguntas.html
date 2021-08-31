@@ -7,7 +7,7 @@
         <script src="funciones.js" type="text/javascript"></script>
     </head>
 
-    <body id="bodyCalculadora" onload="reiniciarJuego2()">
+    <body id="bodyCalculadora" onload="reiniciarJuego2()" style="text-align: center;">
         <h1>El juego de las preguntas</h1>
         Puntuación:  <input type="text" id="puntos" value="0" size="30px" style="width: 60px;">
         Tiempo: <input type="text" id="contador" value="0" size="30px" style="width: 60px;">
@@ -28,9 +28,8 @@
 
         <br><br>
 
-        <input type="button" onclick="girarRuleta()" value="Girar la ruleta">
-
-        <input type="button" onclick="reiniciarJuego2()" value="Reiniciar Juego">
+        <button class="btn second"  onclick="girarRuleta()" style="margin-left: 28%;float: left;"> Gira la RULETA </button>
+        <button class="btn third" onclick="reiniciarJuego2()" style="margin-left: 10%;float: left;">Reiniciar Juego</button>
 
     </body>
 </html>
